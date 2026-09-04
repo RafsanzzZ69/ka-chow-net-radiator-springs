@@ -64,4 +64,4 @@ A project by **Mahir Muntasir Rafsan and Ahmed Al Jaber**.
 
 ## Attribution
 
-Coursework project and report by **Mahir Muntasir Rafsan**. Cisco Packet Tracer is a Cisco product; this repository is an academic networking project and is not affiliated with Disney, Pixar, or Cisco.
+Coursework project and report by **Mahir Muntasir Rafsan** and **Ahmed Al Jaber**. Cisco Packet Tracer is a Cisco product; this repository is an academic networking project and is not affiliated with Disney, Pixar, or Cisco.
