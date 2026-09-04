@@ -58,6 +58,10 @@ A Cisco Packet Tracer enterprise-network design for seven Radiator Springs units
 - The assignment text uses two variants for Flo's web hostname (`www.flo.radiatorsprings.nyc` and `www.flosv8.radiatorsprings.nyc`). Validate the DNS record present in the Packet Tracer file when testing.
 - The technical report credits Mahir Muntasir Rafsan and uses student ID `22201110` to derive the base network. No separate team work-allocation statement was present in the supplied artifacts, so none has been invented here.
 
+## Contributors
+
+A project by **Mahir Muntasir Rafsan and Ahmed Al Jaber**.
+
 ## Attribution
 
 Coursework project and report by **Mahir Muntasir Rafsan**. Cisco Packet Tracer is a Cisco product; this repository is an academic networking project and is not affiliated with Disney, Pixar, or Cisco.
