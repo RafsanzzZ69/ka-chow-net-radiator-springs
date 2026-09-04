@@ -60,4 +60,4 @@ A Cisco Packet Tracer enterprise-network design for seven Radiator Springs units
 
 ## Attribution
 
-Coursework project and report by **Mahir Muntasir Rafsan** (Group 1808). Cisco Packet Tracer is a Cisco product; this repository is an academic networking project and is not affiliated with Disney, Pixar, or Cisco.
+Coursework project and report by **Mahir Muntasir Rafsan**. Cisco Packet Tracer is a Cisco product; this repository is an academic networking project and is not affiliated with Disney, Pixar, or Cisco.
