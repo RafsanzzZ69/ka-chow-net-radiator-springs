@@ -1,0 +1,11 @@
+# Local analysis artifacts
+tmp/
+
+# Cisco Packet Tracer temporary/backup files
+*.pkt.lck
+*.bak
+
+# OS metadata
+.DS_Store
+Thumbs.db
+desktop.ini

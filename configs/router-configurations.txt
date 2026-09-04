@@ -1,0 +1,189 @@
+! KA-CHOW NET ROUTER CONFIGURATIONS
+! Transcribed from the supplied technical report.
+
+! ================================================================
+! SHERIFF'S STATION (SS)
+! ================================================================
+hostname SS
+no ip domain-lookup
+interface GigabitEthernet0/0
+ ip address 11.10.0.1 255.255.254.0
+ no shutdown
+interface GigabitEthernet0/1
+ ip address 11.10.6.65 255.255.255.248
+ no shutdown
+interface Serial0/0/0
+ ip address 11.10.6.73 255.255.255.252
+ clock rate 64000
+ no shutdown
+interface Serial0/0/1
+ ip address 11.10.6.81 255.255.255.252
+ clock rate 64000
+ no shutdown
+interface Serial0/1/0
+ ip address 11.10.6.85 255.255.255.252
+ clock rate 64000
+ no shutdown
+ip dhcp excluded-address 11.10.0.1 11.10.0.10
+ip dhcp excluded-address 11.10.2.1 11.10.2.10
+ip dhcp excluded-address 11.10.5.1 11.10.5.10
+ip dhcp pool SS-LAN
+ network 11.10.0.0 255.255.254.0
+ default-router 11.10.0.1
+ dns-server 11.10.0.2
+ip dhcp pool DC-LAN
+ network 11.10.2.0 255.255.255.0
+ default-router 11.10.2.1
+ dns-server 11.10.0.2
+ip dhcp pool RBA-LAN
+ network 11.10.5.0 255.255.255.128
+ default-router 11.10.5.1
+ dns-server 11.10.0.2
+ip route 11.10.3.0 255.255.255.0 11.10.6.86
+ip route 11.10.4.0 255.255.255.0 11.10.6.66
+ip route 11.10.5.128 255.255.255.128 11.10.6.69
+ip route 11.10.6.0 255.255.255.192 11.10.6.86
+ip route 11.10.6.88 255.255.255.252 11.10.6.86
+router rip
+ version 2
+ no auto-summary
+ network 11.0.0.0
+ passive-interface GigabitEthernet0/0
+ passive-interface GigabitEthernet0/1
+ passive-interface Serial0/1/0
+ redistribute static metric 1
+
+! ================================================================
+! RADIATOR SPRINGS BANK (RBA)
+! ================================================================
+hostname RBA
+no ip domain-lookup
+interface GigabitEthernet0/0
+ ip address 11.10.5.1 255.255.255.128
+ ip helper-address 11.10.6.73
+ no shutdown
+interface Serial0/1/0
+ ip address 11.10.6.74 255.255.255.252
+ no shutdown
+interface Serial0/1/1
+ ip address 11.10.6.77 255.255.255.252
+ clock rate 64000
+ no shutdown
+router rip
+ version 2
+ no auto-summary
+ network 11.0.0.0
+ passive-interface GigabitEthernet0/0
+
+! ================================================================
+! DOC'S CLINIC (DC)
+! ================================================================
+hostname DC
+no ip domain-lookup
+interface GigabitEthernet0/0
+ ip address 11.10.2.1 255.255.255.0
+ ip helper-address 11.10.6.81
+ no shutdown
+interface GigabitEthernet0/1
+ ip address 11.10.6.67 255.255.255.248
+ no shutdown
+interface Serial0/1/0
+ ip address 11.10.6.78 255.255.255.252
+ no shutdown
+interface Serial0/1/1
+ ip address 11.10.6.82 255.255.255.252
+ no shutdown
+router rip
+ version 2
+ no auto-summary
+ network 11.0.0.0
+ passive-interface GigabitEthernet0/0
+ passive-interface GigabitEthernet0/1
+
+! ================================================================
+! FLO'S V8 CAFE (FVC)
+! ================================================================
+hostname FVC
+no ip domain-lookup
+interface GigabitEthernet0/0
+ ip address 11.10.3.1 255.255.255.0
+ no shutdown
+interface GigabitEthernet0/1
+ ip address 11.10.6.68 255.255.255.248
+ no shutdown
+interface Serial0/1/0
+ ip address 11.10.6.86 255.255.255.252
+ no shutdown
+interface Serial0/1/1
+ ip address 11.10.6.89 255.255.255.252
+ clock rate 64000
+ no shutdown
+ip route 11.10.0.0 255.255.254.0 Serial0/1/0
+ip route 11.10.0.0 255.255.254.0 11.10.6.66 5
+ip route 11.10.2.0 255.255.255.0 GigabitEthernet0/1
+ip route 11.10.4.0 255.255.255.0 GigabitEthernet0/1
+ip route 11.10.5.0 255.255.255.128 Serial0/1/0
+ip route 11.10.5.128 255.255.255.128 GigabitEthernet0/1
+ip route 11.10.6.0 255.255.255.192 Serial0/1/1
+
+! ================================================================
+! LUIGI'S CASA DELLA TIRES (LCT)
+! ================================================================
+hostname LCT
+no ip domain-lookup
+interface GigabitEthernet0/0
+ ip address 11.10.4.1 255.255.255.0
+ no shutdown
+interface GigabitEthernet0/1
+ ip address 11.10.6.66 255.255.255.248
+ no shutdown
+ip route 11.10.0.0 255.255.254.0 11.10.6.65
+ip route 11.10.0.0 255.255.254.0 11.10.6.67 5
+ip route 11.10.2.0 255.255.255.0 11.10.6.67
+ip route 11.10.3.0 255.255.255.0 11.10.6.68
+ip route 11.10.5.0 255.255.255.128 11.10.6.65
+ip route 11.10.5.128 255.255.255.128 11.10.6.69
+ip route 11.10.6.0 255.255.255.192 11.10.6.68
+ip route 11.10.6.72 255.255.255.252 11.10.6.65
+ip route 11.10.6.76 255.255.255.252 11.10.6.67
+ip route 11.10.6.80 255.255.255.252 11.10.6.67
+ip route 11.10.6.84 255.255.255.252 11.10.6.68
+ip route 11.10.6.88 255.255.255.252 11.10.6.68
+
+! ================================================================
+! MATER'S TOWING YARD (MTY)
+! ================================================================
+hostname MTY
+no ip domain-lookup
+interface GigabitEthernet0/0
+ ip address 11.10.5.129 255.255.255.128
+ ip helper-address 11.10.4.2
+ no shutdown
+interface GigabitEthernet0/1
+ ip address 11.10.6.69 255.255.255.248
+ no shutdown
+ip route 11.10.0.0 255.255.254.0 11.10.6.65
+ip route 11.10.2.0 255.255.255.0 11.10.6.67
+ip route 11.10.3.0 255.255.255.0 11.10.6.68
+ip route 11.10.4.0 255.255.255.0 11.10.6.66
+ip route 11.10.5.0 255.255.255.128 11.10.6.65
+ip route 11.10.6.0 255.255.255.192 11.10.6.68
+ip route 11.10.6.72 255.255.255.252 11.10.6.65
+ip route 11.10.6.76 255.255.255.252 11.10.6.67
+ip route 11.10.6.80 255.255.255.252 11.10.6.67
+ip route 11.10.6.84 255.255.255.252 11.10.6.68
+ip route 11.10.6.88 255.255.255.252 11.10.6.68
+
+! ================================================================
+! WILLY'S WASTE MANAGEMENT (WWM)
+! ================================================================
+hostname WWM
+no ip domain-lookup
+interface GigabitEthernet0/0
+ ip address 11.10.6.1 255.255.255.192
+ ip helper-address 11.10.3.2
+ no shutdown
+interface Serial0/1/0
+ ip address 11.10.6.90 255.255.255.252
+ no shutdown
+ip route 0.0.0.0 0.0.0.0 11.10.6.89
